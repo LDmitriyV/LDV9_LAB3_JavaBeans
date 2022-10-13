@@ -28,7 +28,7 @@ class LDV9_LAB3 {
             Phones phones1 = phonesDAO.findByPrice(660); // Поиск записи по цене телефона
             System.out.println(phones1 != null ? phones1 : "Нет данных"); // Вывод на экран найденной записи
 
-            phonesDAO.deleteByModel("ung"); // Удаление записей по фрагменту модели
+            phonesDAO.deleteByModel("12"); // Удаление записей по фрагменту модели
             phonesDAO.delete("Apple", "iPhone 14"); // Удаление записи по бренду и модели
 
             List<Phones> phoneslist = phonesDAO.findByBrand("App"); // Поиск записей по фрагменту модели
@@ -38,6 +38,7 @@ class LDV9_LAB3 {
             phonesDAO.append("Huawei", "Mate 10", 128, 770);
             phonesDAO.append("Xiaomi", "Poco X4",64, 600);
             phonesDAO.append("Oppo", "Find X5", 256, 800);
+            phonesDAO.append1("Samsung", "Note 10", 64);
 
             phonesDAO.update("Mate 10", "P50"); // Изменение записей в таблице
 
@@ -48,11 +49,19 @@ class LDV9_LAB3 {
                 System.out.println(myPhones.getBrand() + " " + myPhones.getModel() + " " + myPhones.getCapacity()+ " " + myPhones.getPrice());
             }
 
+
             System.out.println("Вывод записей с брендом Samsung и моделью Galaxy S20:");
 
             list = phonesDAO.select("Samsung", "Galaxy S20");
             for (Phones myPhones : list) {
                 System.out.println(myPhones.getBrand() + " " + myPhones.getModel() + " " + myPhones.getCapacity() + " " + myPhones.getPrice());
+            }
+            
+            System.out.println("Вывод записей с брендом Samsung и моделью Note 10: (без цены)");
+            
+            list = phonesDAO.select("Samsung", "Note 10");
+            for (Phones myPhones : list) {
+                System.out.println(myPhones.getBrand() + " " + myPhones.getModel() + " " + myPhones.getCapacity());
             }
 
         } catch (Exception e) {

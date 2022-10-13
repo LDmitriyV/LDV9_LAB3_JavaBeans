@@ -16,6 +16,7 @@ public interface IPhonesDAO {
     void setDataSource(DataSource ds); // Установка связи с данныими
     void insert(Phones phones); // Вставка новой записи
     void append(String Brand, String Model, int capacity, int price); // Добавление новой записи
+    void append1(String Brand, String Model, int capacity); // Добавление новой записи без цены
     void deleteByModel(String Model); // Удаление записи по модели
     void delete(String Brand, String Model); // Удаление записи с указанным брендом и моделью
     void deleteAll(); // Удаление всех запией

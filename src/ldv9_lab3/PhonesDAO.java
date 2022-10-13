@@ -45,6 +45,13 @@ public class PhonesDAO implements IPhonesDAO {
                 new Object[]{Brand, Model, capacity, price});
     }
 
+        @Override
+    public void append1(String Brand, String Model, int capacity) {  // Реализация добавления новой записи
+        JdbcTemplate jt = new JdbcTemplate(dataSource);
+        jt.update("INSERT INTO phones (brand, model, capacity) VALUES(?,?,?)", 
+                new Object[]{Brand, Model, capacity});
+    }
+    
     @Override
     public void deleteByModel(String model) {  // Реализация удаления записей по модели
         JdbcTemplate jt = new JdbcTemplate(dataSource);
