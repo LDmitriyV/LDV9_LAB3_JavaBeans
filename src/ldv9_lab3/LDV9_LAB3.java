@@ -8,6 +8,7 @@ package ldv9_lab3;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.ApplicationContext;
 import java.util.List;
+import java.util.Scanner;
 
 class LDV9_LAB3 {
 
@@ -38,7 +39,14 @@ class LDV9_LAB3 {
             phonesDAO.append("Huawei", "Mate 10", 128, 770);
             phonesDAO.append("Xiaomi", "Poco X4",64, 600);
             phonesDAO.append("Oppo", "Find X5", 256, 800);
-            phonesDAO.append1("Samsung", "Note 10", 64);
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Brand - ");
+            String scannedBrand = sc.nextLine();
+            System.out.print("Model - ");
+            String scannedModel = sc.nextLine();
+            System.out.print("Capacity - ");
+            int scannedCapacity = sc.nextInt();
+            phonesDAO.append(scannedBrand, scannedModel, scannedCapacity);
 
             phonesDAO.update("Mate 10", "P50"); // Изменение записей в таблице
 
@@ -61,6 +69,16 @@ class LDV9_LAB3 {
             
             list = phonesDAO.select("Samsung", "Note 10");
             for (Phones myPhones : list) {
+                System.out.println(myPhones.getBrand() + " " + myPhones.getModel() + " " + myPhones.getCapacity());
+            }
+            
+            System.out.println("Введите диапазон цен");
+            System.out.println("Цена 1 - ");
+            int scannedPriceMax = sc.nextInt();
+            System.out.println("Цена 2 - ");
+            int scannedPriceMax2 = sc.nextInt();
+            list = phonesDAO.priceSelect(scannedPriceMax, scannedPriceMax2);
+                        for (Phones myPhones : list) {
                 System.out.println(myPhones.getBrand() + " " + myPhones.getModel() + " " + myPhones.getCapacity());
             }
 

@@ -7,7 +7,7 @@
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
          <property name="url" value="jdbc:mysql://localhost:3306/ldv9_lab3?serverTimezone=Asia/Almaty&amp;useSSL=false"/>
         <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="password" value="2238092428dD*" />
     </bean>
 
     <bean id="phonesDAO" class="ldv9_lab3.PhonesDAO">

@@ -22,7 +22,7 @@ import java.util.List;
  * Реализация интерфейса работы с таблицей Person
  *
  */
-public class PhonesDAO implements IPhonesDAO {
+ public class PhonesDAO implements IPhonesDAO {
 
     private DataSource dataSource;
 
@@ -45,12 +45,14 @@ public class PhonesDAO implements IPhonesDAO {
                 new Object[]{Brand, Model, capacity, price});
     }
 
-        @Override
-    public void append1(String Brand, String Model, int capacity) {  // Реализация добавления новой записи
+    @Override
+    public void append(String Brand, String Model, int capacity) {  // Реализация добавления новой записи
         JdbcTemplate jt = new JdbcTemplate(dataSource);
         jt.update("INSERT INTO phones (brand, model, capacity) VALUES(?,?,?)", 
                 new Object[]{Brand, Model, capacity});
     }
+    
+
     
     @Override
     public void deleteByModel(String model) {  // Реализация удаления записей по модели
@@ -97,6 +99,13 @@ public class PhonesDAO implements IPhonesDAO {
         List<Phones> phones = jt.query("SELECT * FROM phones WHERE price = ?",
                 new Object[]{price}, new PhonesRowMapper());
         return phones.size() > 0 ? phones.get(0) : null;
+    }
+    
+    @Override
+    public List<Phones> priceSelect(int scannedPriceMax, int scannedPriceMax2) { // Реализация поиска записи с заданными ценами
+        JdbcTemplate jt = new JdbcTemplate(dataSource);
+        return jt.query("SELECT * FROM phones WHERE price > ? AND price < ?", 
+                new Object[]{scannedPriceMax, scannedPriceMax2}, new PhonesRowMapper());
     }
     
     @Override
