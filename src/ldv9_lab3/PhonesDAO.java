@@ -109,6 +109,13 @@ import java.util.List;
     }
     
     @Override
+    public List<Phones> capacitySelect(int scannedCapacityMax, int scannedCapacityMax2) { // Реализация поиска записи с заданными ценами
+        JdbcTemplate jt = new JdbcTemplate(dataSource);
+        return jt.query("SELECT * FROM phones WHERE capacity > ? AND capacity < ?", 
+                new Object[]{scannedCapacityMax, scannedCapacityMax2}, new PhonesRowMapper());
+    }
+    
+    @Override
     public List<Phones> findByBrand(String Brand) {  // Реализация поиска записей по бренду
         JdbcTemplate jt = new JdbcTemplate(dataSource);
         String sql = "SELECT * FROM phones WHERE brand LIKE ?";

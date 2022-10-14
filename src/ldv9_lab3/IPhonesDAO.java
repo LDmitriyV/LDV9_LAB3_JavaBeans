@@ -22,6 +22,7 @@ public interface IPhonesDAO {
     void deleteAll(); // Удаление всех запией
     void update(String oldModel, String newModel); // Изменение записей в таблице
     List<Phones> priceSelect (int scannedPriceMax, int scannedPriceMax2);
+    List<Phones> capacitySelect (int scannedCapacityMax, int scannedCapacityMax2);
     Phones findByPrice(int id); // Получение записи с заданной ценой
     List<Phones> findByBrand(String Brand); // Получение записей с заданным брендом 
     List<Phones> select(String Brand, String Model); // Получение записей с заданным брендом и моделью

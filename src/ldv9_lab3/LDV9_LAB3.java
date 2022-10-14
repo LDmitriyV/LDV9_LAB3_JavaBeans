@@ -82,6 +82,16 @@ class LDV9_LAB3 {
                 System.out.println(myPhones.getBrand() + " " + myPhones.getModel() + " " + myPhones.getCapacity());
             }
 
+            System.out.println("Введите диапазон памяти");
+            System.out.println("Память 1 - ");
+            int scannedCapacityMax = sc.nextInt();
+            System.out.println("Память 2 - ");
+            int scannedCapacityMax2 = sc.nextInt();
+            list = phonesDAO.capacitySelect(scannedCapacityMax, scannedCapacityMax2);
+                        for (Phones myPhones : list) {
+                System.out.println(myPhones.getBrand() + " " + myPhones.getModel() + " " + myPhones.getCapacity());
+            } 
+                        
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error!");
